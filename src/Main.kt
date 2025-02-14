@@ -1,3 +1,5 @@
+import javax.swing.text.StyledEditorKit.BoldAction
+
 fun main() {
 
     //Part 1
@@ -15,6 +17,20 @@ fun main() {
     println(sortedList(fruits,findWordLength))
 
     //Part 4
+    println(customFilter(listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)) { it > 5 })
+    //or
+    println(customFilter(listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),biggerThanFive))
+
+
+    println(customFilter(listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)) { it % 2 == 0 })
+    //or
+    println(customFilter(listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),isEven))
+
+
+    println(customFilter(listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)) { it % 3 == 0 })
+    //or
+    println(customFilter(listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),multiplesOfThree))
+
 
 
 }
@@ -37,4 +53,18 @@ fun sortedList(list:List<String>, filteringFun: (String) -> Int): List<String>{
 }
 val findWordLength: (String) -> Int = {
     it -> it.length
+}
+
+//for part 4
+fun customFilter(list: List<Int>, filteringFun: (Int) -> Boolean): List<Int>{
+    return list.filter(filteringFun)
+}
+val biggerThanFive: (Int) -> Boolean = {
+    it -> it > 5
+}
+val isEven: (Int) -> Boolean = {
+        it -> it % 2 == 0
+}
+val multiplesOfThree: (Int) -> Boolean = {
+        it -> it % 3 == 0
 }
