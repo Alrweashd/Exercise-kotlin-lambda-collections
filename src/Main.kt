@@ -32,6 +32,9 @@ fun main() {
     println(customFilter(listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),multiplesOfThree))
 
 
+    //Part 5
+    println(processNumbers(listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),lambdaNotEven,lambdaSquare));
+
 
 }
 
@@ -67,4 +70,16 @@ val isEven: (Int) -> Boolean = {
 }
 val multiplesOfThree: (Int) -> Boolean = {
         it -> it % 3 == 0
+}
+
+//for part 5
+//takes two lambdas funs as paramters with List of int and returns a list of int
+fun processNumbers(list:List<Int>,lambdaNotEven: (Int)->Boolean, lambdaSquare: (Int) -> Int): List<Int>{
+    return list.filter(lambdaNotEven).map(lambdaSquare);
+}
+val lambdaNotEven: (Int) -> Boolean = {
+    it -> it % 2 != 0
+}
+val lambdaSquare: (Int) -> Int = {
+    it -> it * it
 }
